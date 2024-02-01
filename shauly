@@ -1,0 +1,65 @@
+import time
+
+def intro():
+    print("Welcome to the Escape the Room game!")
+    time.sleep(1)
+    print("You find yourself locked in a mysterious room.")
+    time.sleep(1)
+    print("Your goal is to find a way to escape.")
+    time.sleep(1)
+    print("Look around and gather clues.")
+
+def choose_action():
+    print("\nWhat would you like to do?")
+    print("1. Examine the room")
+    print("2. Check the door")
+    print("3. Look under the bed")
+    return input("Enter the number of your choice: ")
+
+def examine_room():
+    print("\nYou examine the room and find:")
+    time.sleep(1)
+    print("- A key on the table")
+    time.sleep(1)
+    print("- A mysterious painting on the wall")
+    time.sleep(1)
+    print("- A locked drawer")
+
+def check_door(has_key):
+    if has_key:
+        print("\nYou use the key to unlock the door!")
+        time.sleep(1)
+        print("Congratulations! You have escaped!")
+        return True
+    else:
+        print("\nThe door is locked. Maybe there's a key somewhere.")
+
+def look_under_bed():
+    print("\nYou look under the bed and find:")
+    time.sleep(1)
+    print("- Dust bunnies")
+    time.sleep(1)
+    print("- An old shoe")
+    time.sleep(1)
+    print("- Nothing useful")
+
+def escape_the_room():
+    intro()
+    
+    has_key = False
+
+    while True:
+        action = choose_action()
+
+        if action == '1':
+            examine_room()
+        elif action == '2':
+            if check_door(has_key):
+                break
+        elif action == '3':
+            look_under_bed()
+        else:
+            print("Invalid choice. Please enter a valid number.")
+
+# Start the game
+escape_the_room()
